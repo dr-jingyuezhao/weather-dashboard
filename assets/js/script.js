@@ -45,6 +45,15 @@ function currentWeather() {
         method: "GET"
     }).then(function (response) {
         console.log(response);
+        // $("#current-weather").removeClass("d-none");
+        console.log(response.name);
+        $("#cityName").text(response.name);
+        // Convert the temp to Celsius
+        var tempC = response.main.temp - 273.15;
+        console.log(tempC.toFixed(2));
+        $("#temperature").text("Temp: " + tempC.toFixed(2) + " &#176F");
+        $("#wind-speed").text(response.wind.speed);
+        $("#humidity").text(response.main.humidity);
     });
 
 }
