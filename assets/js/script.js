@@ -1,47 +1,90 @@
-// Create a weather dashboard with form inputs.
-// API call: api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
+// Current weather data API call: https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+// 5 day weather forecast API call: https://api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
+// Declare all variables
 var apiKey = "4338bc6e6ee374a0322f73ff5e6b9efd";
+var cityInput = "";
+var allCities = [];
+var cityList = $("#history");
 
-// * takes API data (JSON/object) and turns it into elements on the page
-// * @param {object} NYTData - object containing NYT API data
-// */
+// Generate a button for each searched city in search history stored in the localStorage
+showSearchHistory();
+
+function showSearchHistory() {
+    allCities = JSON.parse(localStorage.getItem("allCities")) || [];
+    for (var i = 0; i < allCities.length; i++) {
+        var searchedCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${allCities[i]}</button><br>`);
+        cityList.prepend(searchedCity);
+    }
+}
+// Add the function to add button for a new city with input from the search box
+function addNewCity() {
+    console.log("Already searched cities: " + allCities);
+    var newCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${cityInput}</button><br>`);
+    if (!allCities.includes(cityInput)) {
+        allCities.push(cityInput); // pushes new cities entered to array 
+        console.log(allCities);
+        localStorage.setItem("allCities", JSON.stringify(allCities)); //saves city input to local storage 
+        cityList.prepend(newCity);
+    } else {
+        console.log("It's not a new city!");
+    }
+}
+
+function currentWeather() {
+    // Empty the sections associated with the weather data
+    $("#today").empty();
+    // Build the query URL for the ajax request to the OpenWeather API
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + apiKey;
+    console.log(queryURL);
+    // Make the AJAX request to the OpenWeather API - GETs the JSON data at the queryURL.
+    // The data then gets passed as an argument to the function displaying weather data
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+    });
+
+}
+
+function weatherForecast() {
+    // Empty the sections associated with the weather data
+    $("#forecast").empty();
+    // Build the query URL for the ajax request to the OpenWeather API
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=" + apiKey;
+    console.log(queryURL);
+    // Make the AJAX request to the OpenWeather API - GETs the JSON data at the queryURL.
+    // The data then gets passed as an argument to the function displaying weather data
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+    });
+
+}
+
 
 
 // CLICK HANDLER
 // .on("click") function associated with the Search Button
 $("#search-button").on("click", function (event) {
-    // This line allows us to take advantage of the HTML "submit" property
-    // This way we can hit enter on the keyboard and it registers the search
-    // (in addition to clicks). Prevents the page from reloading on form submit.
     event.preventDefault();
-
-    // Empty the region associated with the articles
-    $("#today").empty();
-    $("#forecast").empty();
-    // Build the query URL for the ajax request to the NYT API
-    var cityName = $("#search-input").val().trim();
-    console.log(cityName);
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
-    console.log(queryURL);
-
-    // Make the AJAX request to the API - GETs the JSON data at the queryURL.
-    // The data then gets passed as an argument to the updatePage function
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(updatePage);
+    cityInput = $("#search-input").val().trim();
+    console.log("New search for: " + cityInput);
+    addNewCity();
+    currentWeather();
+    weatherForecast();
 });
 
-function updatePage(weatherData) {
-    console.log(weatherData);
-    // When a user searches for a city they are presented with current
+// When a user searches for a city they are presented with current
 
-    // and future conditions for that city
+// and future conditions for that city
 
 
-    // and that city is added to the search history.
+// and that city is added to the search history.
 
-}
+
 
 
 
