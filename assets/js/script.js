@@ -5,6 +5,8 @@ var apiKey = "4338bc6e6ee374a0322f73ff5e6b9efd";
 var cityInput = "";
 var allCities = [];
 var cityList = $("#history");
+var todayDate = moment().format("DD/MM/YYYY");
+console.log(todayDate);
 
 // Generate a button for each searched city in search history stored in the localStorage
 showSearchHistory();
