@@ -18,6 +18,7 @@ function showSearchHistory() {
         cityList.prepend(searchedCity);
     }
 }
+
 // Add the function to add button for a new city with input from the search box
 function addNewCity() {
     console.log("Already searched cities: " + allCities);
@@ -31,6 +32,14 @@ function addNewCity() {
         console.log("It's not a new city!");
     }
 }
+
+// Show weather for a searched city on button click 
+$("#history").on("click", ".city-btn", function (event) {
+    event.preventDefault();
+    var cityInput = ($(this).text());
+    showWeather(cityInput);
+});
+
 
 function currentWeather() {
     // Empty the sections associated with the weather data
