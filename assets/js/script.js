@@ -33,12 +33,12 @@ function addNewCity() {
     }
 }
 
-// Show weather for a searched city on button click 
-$("#history").on("click", ".city-btn", function (event) {
-    event.preventDefault();
-    var cityInput = ($(this).text());
-    showWeather(cityInput);
-});
+// // Show weather for a searched city on button click 
+// $("#history").on("click", ".city-btn", function (event) {
+//     event.preventDefault();
+//     var cityInput = ($(this).text());
+//     showWeather(cityInput);
+// });
 
 
 function currentWeather() {
@@ -54,15 +54,14 @@ function currentWeather() {
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        // $("#current-weather").removeClass("d-none");
         console.log(response.name);
         $("#cityName").text(response.name);
         // Convert the temp to Celsius
         var tempC = response.main.temp - 273.15;
         console.log(tempC.toFixed(2));
-        $("#temperature").text("Temp: " + tempC.toFixed(2) + " &#176F");
-        $("#wind-speed").text(response.wind.speed);
-        $("#humidity").text(response.main.humidity);
+        $("#temp-current").text("Temp: " + tempC.toFixed(2) + " &#176F");
+        $("#wind-current").text(response.wind.speed);
+        $("#humidity-current").text(response.main.humidity);
     });
 
 }
