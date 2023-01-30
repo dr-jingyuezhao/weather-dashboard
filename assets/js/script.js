@@ -43,7 +43,7 @@ function addNewCity() {
 
 function currentWeather() {
     // Empty the sections associated with the weather data
-    $("#today").empty();
+    // $("#today").empty();
     // Build the query URL for the ajax request to the OpenWeather API
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + apiKey;
     console.log(queryURL);
@@ -58,10 +58,10 @@ function currentWeather() {
         // Convert the temperature to Celsius
         var tempC = response.main.temp - 273.15;
         var iconURL = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
-        $("#today").html(`<div class="card border-dark col-lg-12 mb-3" id="current-weather">
+        $("#today").html(`<div id="current-weather" class="card border-dark col-lg-12 mb-3">
         <div class="card-body">
-          <h3 id="cityName" class="card-title">${response.name} (${todayDate})
-            <img id="wicon" src="${iconURL}" alt="weather icon"></img>
+          <h3 class="card-title">${response.name} (${todayDate})
+            <img src="${iconURL}" alt="weather icon"></img>
           </h3>
           <p class="card-text">Temperature: ${tempC.toFixed(2)} &#8451;</p>
           <p class="card-text">Wind-speed: ${response.wind.speed} KPH</p>
@@ -74,7 +74,7 @@ function currentWeather() {
 
 function weatherForecast() {
     // Empty the sections associated with the weather data
-    $("#forecast").empty();
+    // $("#forecast").empty();
     // Build the query URL for the ajax request to the OpenWeather API
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=" + apiKey;
     console.log(queryURL);
@@ -85,10 +85,31 @@ function weatherForecast() {
         method: "GET"
     }).then(function (response) {
         console.log(response);
+        // $("#forecast").html(
+        //     `<div class="container-fluid">
+        // <h4 class="sectionHeading">5-Day Forecast:</h4>
+        // <div id="forecast-5d" class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-5 weather-forecast">`);
+
+        //         for (var i = 7; i < response.list.length - 1; i += 8) {
+        //             // console.log(response.list[i])
+        //             // console.log(response.list[i].weather[0].icon)
+        //             var tempC = response.list[i].main.temp - 273.15;
+        //             var iconURL = "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png";
+        //             $("#forecast-5d").append(`<div class="cardContainer col mb-3">
+        //     <div class="card text-white bg-dark">
+        //       <div class="card-body">
+        //         <h6 class="card-title">DD/M/YYYY</h6>
+        //         <div><img src="${iconURL}" alt="weather icon"></div>
+        //         <p class="card-text">Temp: ${tempC.toFixed(2)} &#8451;</p>
+        //         <p class="card-text">Wind: ${response.list[i].wind.speed} KPH</p>
+        //         <p class="card-text">Humidity: ${response.list[i].main.humidity} %</p>
+        //       </div>
+        //     </div>
+        //   </div>`);
+        //         }
     });
 
 }
-
 
 
 // CLICK HANDLER

@@ -98,6 +98,11 @@ var iconCode = response.weather[0].icon;
 var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
 $('#wicon').attr('src', iconURL);
 
+for (var i = 7; i < response.list.length-1; i+= 8) {
+            console.log(response.list[i])
+            console.log(response.list[i].weather[0].icon)
+        }
+
 // When a user searches for a city they are presented with current
 
 // and future conditions for that city
