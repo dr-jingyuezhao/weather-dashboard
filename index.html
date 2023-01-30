@@ -6,8 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <!-- <link rel="stylesheet" href="styles/reset.css" /> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
+
+  <!-- kit code from fontawesome -->
+  <script src="https://kit.fontawesome.com/c298d07cae.js" crossorigin="anonymous"></script>
+
   <title>Weather Dashboard</title>
 </head>
 
@@ -46,29 +50,83 @@
           <!-- add a card for current weather -->
           <div class="card border-dark col-lg-12 mb-3" id="current-weather">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <img src="..." class="card-img-top" alt="...">
-              <h3 id="cityName" class="cityName align-middle"><i id="current-pic"></i></h3>
-              <!-- <p class="card-text">This is a wider card with supporting text below.</p> -->
-              <p id="temperature" class="card-text">Temperature</p>
-              <p id="wind-speed" class="card-text">Wind-speed</p>
-              <p id="humidity" class="card-text">Humidity</p>
+              <h3 id="cityName" class="card-title">City (DD/M/YYYY)
+                <i src="..." class="fab fa-twitter" id="current-pic"></i>
+              </h3>
+              <p id="temp-current" class="card-text">Temperature: C</p>
+              <p id="wind-current" class="card-text">Wind-speed: KPH</p>
+              <p id="humidity-current" class="card-text">Humidity: %</p>
             </div>
           </div>
 
         </section>
         <section id="forecast" class="row mt-3" role="region" aria-live="polite">
           <div class="container-fluid">
-            <h2 class="sectionHeading">Work</h2>
-            <div class="row weather-forecast">
+            <h4 class="sectionHeading">5-Day Forecast:</h4>
+            <div class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-5 weather-forecast">
 
               <!-- add cards for 5-day weather forecast -->
               <!-- card 1 -->
-              <div class="cardContainer col-sm-12 col-md-6 col-lg-4 mb-3">
-                <div class="card text-white bg-dark mb-3">
+              <div class="cardContainer col mb-3">
+                <div class="card text-white bg-dark">
                   <div class="card-body">
-                    <h5 class="card-title">Dark card title</h5>
-                    <p class="card-text">FPP mimics the real shopping experience as it all.</p>
+                    <h6 class="card-title">DD/M/YYYY</h6>
+                    <i id="d1-pic"></i>
+                    <p id="temp-d1" class="card-text">Temp:</p>
+                    <p id="wind-d1" class="card-text">Wind:</p>
+                    <p id="humidity-d1" class="card-text">Humidity:</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- card 2 -->
+              <div class="cardContainer col mb-3">
+                <div class="card text-white bg-dark">
+                  <div class="card-body">
+                    <h6 class="card-title">DD/M/YYYY</h6>
+                    <i id="d2-pic"></i>
+                    <p id="temp-d2" class="card-text">Temp:</p>
+                    <p id="wind-d2" class="card-text">Wind:</p>
+                    <p id="humidity-d2" class="card-text">Humidity:</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- card 3 -->
+              <div class="cardContainer col mb-3">
+                <div class="card text-white bg-dark">
+                  <div class="card-body">
+                    <h6 class="card-title">DD/M/YYYY</h6>
+                    <i id="d3-pic"></i>
+                    <p id="temp-d3" class="card-text">Temp:</p>
+                    <p id="wind-d3" class="card-text">Wind:</p>
+                    <p id="humidity-d3" class="card-text">Humidity:</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- card 4 -->
+              <div class="cardContainer col mb-3">
+                <div class="card text-white bg-dark">
+                  <div class="card-body">
+                    <h6 class="card-title">DD/M/YYYY</h6>
+                    <i id="d4-pic"></i>
+                    <p id="temp-d4" class="card-text">Temp:</p>
+                    <p id="wind-d4" class="card-text">Wind:</p>
+                    <p id="humidity-d4" class="card-text">Humidity:</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- card 5 -->
+              <div class="cardContainer col mb-3">
+                <div class="card text-white bg-dark">
+                  <div class="card-body">
+                    <h6 class="card-title">DD/M/YYYY</h6>
+                    <i id="d5-pic"></i>
+                    <p id="temp-d5" class="card-text">Temp:</p>
+                    <p id="wind-d5" class="card-text">Wind:</p>
+                    <p id="humidity-d5" class="card-text">Humidity:</p>
                   </div>
                 </div>
               </div>
