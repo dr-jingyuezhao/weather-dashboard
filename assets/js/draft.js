@@ -84,6 +84,34 @@ $("#search-button").on("click", function (event) {
     updatePage();
 });
 
+
+/* <div class="card border-secondary mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body text-secondary">
+    <h5 class="card-title">Secondary card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div> */
+
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+  <img src="..." class="card-img-top" alt="...">
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+  </div>
+</div>
+
+
+
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Dark card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
 // When a user searches for a city they are presented with current
 
 // and future conditions for that city
