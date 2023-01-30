@@ -5,7 +5,7 @@ var apiKey = "4338bc6e6ee374a0322f73ff5e6b9efd";
 var cityInput = "";
 var allCities = [];
 var cityList = $("#history");
-var todayDate = moment().format("DD/MM/YYYY");
+var todayDate = moment().format("DD/M/YYYY");
 console.log(todayDate);
 
 // Generate a button for each searched city in search history stored in the localStorage
@@ -13,7 +13,7 @@ showSearchHistory();
 
 function showSearchHistory() {
     allCities = JSON.parse(localStorage.getItem("allCities")) || [];
-    for (var i = 0; i < allCities.length; i++) {
+    for (var i = 0; i < 6; i++) {
         var searchedCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${allCities[i]}</button><br>`);
         cityList.prepend(searchedCity);
     }
@@ -55,13 +55,19 @@ function currentWeather() {
     }).then(function (response) {
         console.log(response);
         console.log(response.name);
-        $("#cityName").text(response.name);
-        // Convert the temp to Celsius
+        // Convert the temperature to Celsius
         var tempC = response.main.temp - 273.15;
-        console.log(tempC.toFixed(2));
-        $("#temp-current").text("Temp: " + tempC.toFixed(2) + " &#176F");
-        $("#wind-current").text(response.wind.speed);
-        $("#humidity-current").text(response.main.humidity);
+        var iconURL = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+        $("#today").html(`<div class="card border-dark col-lg-12 mb-3" id="current-weather">
+        <div class="card-body">
+          <h3 id="cityName" class="card-title">${response.name} (${todayDate})
+            <img id="wicon" src="${iconURL}" alt="weather icon"></img>
+          </h3>
+          <p class="card-text">Temperature: ${tempC.toFixed(2)} &#8451;</p>
+          <p class="card-text">Wind-speed: ${response.wind.speed} KPH</p>
+          <p class="card-text">Humidity: ${response.main.humidity} %</p>
+        </div>
+      </div>`);
     });
 
 }

@@ -92,6 +92,12 @@ $("#history").on("click", ".city-btn", function (event) {
     showWeather(cityInput);
 });
 
+
+<div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+var iconCode = response.weather[0].icon;
+var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+$('#wicon').attr('src', iconURL);
+
 // When a user searches for a city they are presented with current
 
 // and future conditions for that city
