@@ -9,30 +9,31 @@ var todayDate = moment().format("DD/MM/YYYY");
 console.log(todayDate);
 
 // Generate a button for each searched city in search history stored in the localStorage
-showSearchHistory();
-
 function showSearchHistory() {
+    $("#history").empty();
     allCities = JSON.parse(localStorage.getItem("allCities")) || [];
     if (allCities === null) {
         return;
     } else if (0 < allCities.length < 6) {
         for (var i = 0; i < allCities.length; i++) {
-            var searchedCity = $(`<button type="button" class="btn btn-secondary city-btn">${allCities[i]}</button><br>`);
+            var searchedCity = $(`<button type="button" class="btn btn-secondary btn-sm city-btn">${allCities[i]}</button><br>`);
             cityList.prepend(searchedCity);
         }
     } else {
         for (var i = 0; i < 6; i++) {
-            var searchedCity = $(`<button type="button" class="btn btn-secondary city-btn">${allCities[i]}</button><br>`);
+            var searchedCity = $(`<button type="button" class="btn btn-secondary btn-sm city-btn">${allCities[i]}</button><br>`);
             cityList.prepend(searchedCity);
         }
     }
 }
 
+showSearchHistory();
+
 // When a user searches for a city, that city is added to the search history.
 // Add the function to add button for a new city with input from the search box
 function addNewCity(cityName) {
     console.log("Already searched cities: " + allCities);
-    var newCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${cityName}</button><br>`);
+    var newCity = $(`<button type="button" class="btn btn-secondary btn-sm city-btn">${cityName}</button><br>`);
     if (!allCities.includes(cityName)) {
         allCities.push(cityName); // pushes new cities entered to array 
         console.log(allCities);
@@ -40,6 +41,7 @@ function addNewCity(cityName) {
         cityList.prepend(newCity);
     } else {
         console.log("It's not a new city!");
+        return;
     }
 }
 
@@ -67,7 +69,7 @@ function currentWeather(cityName) {
         // The temperature
         // The wind speed
         // The humidity
-        $("#today").html(`<div id="current-weather" class="card border-primary col-lg-12 mb-3">
+        $("#today").html(`<div id="current-weather" class="card border-primary col-lg-12 mt-3 mb-4">
         <div class="card-body">
           <h3 class="card-title">${response.name} (${todayDate})
             <img src="${iconURL}" alt="weather icon"></img>
@@ -98,7 +100,7 @@ function weatherForecast(cityName) {
         $("#forecast").html(
             `<div class="container-fluid">
         <h4 class="sectionHeading">5-Day Forecast:</h4>
-        <div id="forecast-5d" class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-5 weather-forecast">`);
+        <div id="forecast-5d" class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-5 mt-3 weather-forecast">`);
         // Use for loop to add a new card for each day of the 5-day forecast
         for (var i = 7; i < response.list.length; i += 8) {
             var date = response.list[i].dt_txt.substr(0, 10);

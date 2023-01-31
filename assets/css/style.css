@@ -1,0 +1,15 @@
+header {
+    background-image: linear-gradient(to right, blue , darkblue);
+}
+
+hr {
+    border: 1px solid lightgrey;
+}
+
+p {
+    font-size: smaller;
+}
+
+.card-body {
+    padding: 25px 10px;
+}
