@@ -62,7 +62,7 @@ function currentWeather(cityName) {
         console.log(response.name);
         // Convert the temperature to Celsius
         var tempC = response.main.temp - 273.15;
-        var iconURL = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+        var iconURL = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
         // When a user views the current weather conditions for that city they are presented with:
         // The city name // The date
         // An icon representation of weather conditions
@@ -106,7 +106,7 @@ function weatherForecast(cityName) {
             var date = response.list[i].dt_txt.substr(0, 10);
             var reformatDate = moment(date, "YYYY-MM-DD").format("DD/MM/YYYY");
             var tempC = response.list[i].main.temp - 273.15;
-            var iconURL = "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png";
+            var iconURL = "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png";
             // When a user views future weather conditions for that city they are presented with a 5-day forecast that displays:
             // The date
             // An icon representation of weather conditions
