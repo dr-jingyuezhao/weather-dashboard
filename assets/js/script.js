@@ -21,11 +21,11 @@ function showSearchHistory() {
 
 // When a user searches for a city, that city is added to the search history.
 // Add the function to add button for a new city with input from the search box
-function addNewCity() {
+function addNewCity(cityName) {
     console.log("Already searched cities: " + allCities);
-    var newCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${cityInput}</button><br>`);
-    if (!allCities.includes(cityInput)) {
-        allCities.push(cityInput); // pushes new cities entered to array 
+    var newCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${cityName}</button><br>`);
+    if (!allCities.includes(cityName)) {
+        allCities.push(cityName); // pushes new cities entered to array 
         console.log(allCities);
         localStorage.setItem("allCities", JSON.stringify(allCities)); //saves city input to local storage 
         cityList.prepend(newCity);
@@ -35,11 +35,11 @@ function addNewCity() {
 }
 
 // When a user searches for a city they are presented with current weather conditions for that city
-function currentWeather() {
+function currentWeather(cityName) {
     // Empty the sections associated with the weather data
     $("#today").empty();
     // Build the query URL for the ajax request to the OpenWeather API
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + apiKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
     console.log(queryURL);
     // Make the AJAX request to the OpenWeather API - GETs the JSON data at the queryURL.
     // The data then gets passed as an argument to the function displaying weather data
@@ -72,11 +72,11 @@ function currentWeather() {
 }
 
 // When a user searches for a city they are presented with future weather conditions for that city
-function weatherForecast() {
+function weatherForecast(cityName) {
     // Empty the sections associated with the weather data
     $("#forecast").empty();
     // Build the query URL for the ajax request to the OpenWeather API
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&appid=" + apiKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
     console.log(queryURL);
     // Make the AJAX request to the OpenWeather API - GETs the JSON data at the queryURL.
     // The data then gets passed as an argument to the function displaying weather data
@@ -124,18 +124,19 @@ $("#search-button").on("click", function (event) {
     event.preventDefault();
     cityInput = $("#search-input").val().trim();
     console.log("New search for: " + cityInput);
-    addNewCity();
-    currentWeather();
-    weatherForecast();
+    addNewCity(cityInput);
+    currentWeather(cityInput);
+    weatherForecast(cityInput);
 });
 
 // When a user clicks on a city in the search history they are again presented with current and future conditions for that city.
-// // Show weather for a searched city on button click
-// $("#history").on("click", ".city-btn", function (event) {
-//     event.preventDefault();
-//     var cityInput = ($(this).text());
-//     showWeather(cityInput);
-// });
+// Show weather for a searched city on button click
+$("#history").on("click", function (event) {
+    event.preventDefault();
+    var searchedCity = ($(event.target).text());
+    currentWeather(searchedCity);
+    weatherForecast(searchedCity);
+});
 
 
 
