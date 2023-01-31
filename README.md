@@ -44,7 +44,7 @@ When opening the app in the browser, the user will be presented with a weather d
 
 The following image shows the web application's appearance and functionality:
 
-![website demo](assets/img/10-server-side-apis-challenge-demo.png)
+![website demo](assets/img/app_screenshot_2023-01-31.jpg)
 
 ## Credits
 
@@ -56,6 +56,9 @@ Resources:
 * https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
 * https://momentjs.com/
 * https://api.jquery.com/
+* https://stackoverflow.com/questions/60024761/5-responsive-cards-per-row-with-bootstrap-4
+* https://www.w3schools.com/css/css3_gradients.asp
+* https://www.w3schools.com/jsref/jsref_substr.asp
 
 ## License
 
