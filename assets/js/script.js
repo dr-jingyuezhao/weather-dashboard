@@ -100,7 +100,7 @@ function weatherForecast(cityName) {
         $("#forecast").html(
             `<div class="container-fluid">
         <h4 class="sectionHeading">5-Day Forecast:</h4>
-        <div id="forecast-5d" class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-5 mt-3 weather-forecast">`);
+        <div id="forecast-5d" class="row row-cols-1 row-cols-md-3 row-cols-xl-5 mt-3 weather-forecast">`);
         // Use for loop to add a new card for each day of the 5-day forecast
         for (var i = 7; i < response.list.length; i += 8) {
             var date = response.list[i].dt_txt.substr(0, 10);
