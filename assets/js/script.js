@@ -13,9 +13,18 @@ showSearchHistory();
 
 function showSearchHistory() {
     allCities = JSON.parse(localStorage.getItem("allCities")) || [];
-    for (var i = 0; i < 6; i++) {
-        var searchedCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${allCities[i]}</button><br>`);
-        cityList.prepend(searchedCity);
+    if (allCities === null) {
+        return;
+    } else if (0 < allCities.length < 6) {
+        for (var i = 0; i < allCities.length; i++) {
+            var searchedCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${allCities[i]}</button><br>`);
+            cityList.prepend(searchedCity);
+        }
+    } else {
+        for (var i = 0; i < 6; i++) {
+            var searchedCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${allCities[i]}</button><br>`);
+            cityList.prepend(searchedCity);
+        }
     }
 }
 
