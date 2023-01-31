@@ -17,12 +17,12 @@ function showSearchHistory() {
         return;
     } else if (0 < allCities.length < 6) {
         for (var i = 0; i < allCities.length; i++) {
-            var searchedCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${allCities[i]}</button><br>`);
+            var searchedCity = $(`<button type="button" class="btn btn-secondary city-btn">${allCities[i]}</button><br>`);
             cityList.prepend(searchedCity);
         }
     } else {
         for (var i = 0; i < 6; i++) {
-            var searchedCity = $(`<button type="button" class="btn btn-secondary btn-block city-btn">${allCities[i]}</button><br>`);
+            var searchedCity = $(`<button type="button" class="btn btn-secondary city-btn">${allCities[i]}</button><br>`);
             cityList.prepend(searchedCity);
         }
     }
@@ -67,7 +67,7 @@ function currentWeather(cityName) {
         // The temperature
         // The wind speed
         // The humidity
-        $("#today").html(`<div id="current-weather" class="card border-dark col-lg-12 mb-3">
+        $("#today").html(`<div id="current-weather" class="card border-primary col-lg-12 mb-3">
         <div class="card-body">
           <h3 class="card-title">${response.name} (${todayDate})
             <img src="${iconURL}" alt="weather icon"></img>
@@ -112,7 +112,7 @@ function weatherForecast(cityName) {
             // The wind speed
             // The humidity
             $("#forecast-5d").append(`<div class="cardContainer col mb-3">
-            <div class="card text-white bg-dark">
+            <div class="card text-white bg-primary">
               <div class="card-body">
                 <h6 class="card-title text-center">${reformatDate}</h6>
                 <div class="text-center"><img src="${iconURL}" alt="weather icon"></div>
